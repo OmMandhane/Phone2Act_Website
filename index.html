@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phone2Act: A Low-Cost, Hardware-Agnostic Teleoperation System</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <style>
+    body { font-family: 'Google Sans', sans-serif; }
+    .title.is-1 { font-weight: 700; }
+    .author-block { display: inline-block; margin-right: 15px; font-size: 1.1rem; }
+    .institution { font-size: 1rem; color: #555; }
+    .video-container { text-align: center; margin-bottom: 20px; }
+    .section-title { margin-top: 3rem; margin-bottom: 1.5rem; font-weight: 600; border-bottom: 2px solid #eee; padding-bottom: 10px;}
+    .hero-body { padding: 3rem 1.5rem; }
+    .button.is-dark { background-color: #363636; color: white; border-radius: 20px; }
+    .button.is-dark:hover { background-color: #000; }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-1 publication-title">Phone2Act</h1>
+      <h2 class="subtitle is-3 publication-subtitle">A Low-Cost, Hardware-Agnostic Teleoperation System for Scalable VLA Data Collection</h2>
+      
+      <div class="is-size-5 publication-authors" style="margin-top: 20px;">
+        <span class="author-block"><b>Om Mandhane*</b>,</span>
+        <span class="author-block"><b>Bipin Yadav*</b>,</span>
+        <span class="author-block"><b>Sangeetha Prasanna Ram</b>,</span>
+        <span class="author-block"><b>Gopalakrishnan Narayanan</b></span>
+      </div>
+
+      <div class="is-size-6 institution" style="margin-top: 10px;">
+        <span class="author-block">Vivekanand Education Society's Institute of Technology (VESIT), Mumbai</span><br>
+        <span class="author-block" style="font-size: 0.9em;">* Equal contribution</span>
+      </div>
+
+      <div class="column has-text-centered" style="margin-top: 20px;">
+        <div class="publication-links">
+          <span class="link-block">
+            <a href="https://arxiv.org/abs/XXXX.XXXXX" class="button is-dark is-outlined">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="https://github.com/OmMandhane/Phone2Act" class="button is-dark is-outlined">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="https://github.com/OmMandhane/Phone2Act/releases" class="button is-dark is-outlined">
+              <span class="icon"><i class="fab fa-android"></i></span>
+              <span>Download APK</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <div class="video-container" style="margin-bottom: 40px;">
+      <img src="media/teaser.jpg" alt="Phone2Act Teaser" width="100%" style="border-radius: 10px;">
+    </div>
+
+    <div class="video-container">
+      <video id="teaser" autoplay muted loop playsinline width="100%" style="border-radius: 10px;">
+        <source src="media/phone2act_demo.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered" style="margin-top: 15px;">
+        <b>Phone2Act</b> transforms a commodity smartphone into a 6-DoF controller via ARCore. The system features built-in safety filters, an unlimited virtual workspace via a clutching mechanism, and seamless gripper control.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 section-title">Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            Collecting diverse, high-quality manipulation data for Vision-Language-Action (VLA) model training remains prohibitively expensive for many research groups, as existing teleoperation frameworks rely on specialized hardware or are tightly coupled to specific robot platforms.
+          </p>
+          <p>
+            We present <b>Phone2Act</b>, a low-cost, hardware-agnostic teleoperation framework that transforms a commodity Android smartphone into a <b>6-DoF robot controller</b> via Google ARCore. Built on a modular ROS 2 architecture, it decouples control logic from hardware specifics through interchangeable bridge nodes — supporting platforms from industrial cobots to low-cost bimanual arms <b>without any code modification</b>.
+          </p>
+          <p>
+            A <b>Universal Recorder</b> synchronizes multi-camera RGB streams with robot state feedback and exports demonstrations natively in the <b>LeRobot dataset format</b>, eliminating post-processing and enabling immediate VLA fine-tuning. We validate the framework by fine-tuning <b>GR00T-N1.5</b> on 130 collected episodes, achieving a <b>90% success rate</b> on a real-world multi-stage pick-and-place task on a physical Dobot CR5.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">Intuitive Teleoperation & Native Safety</h2>
+    <div class="columns is-vcentered">
+      <div class="column is-half">
+        <div class="content has-text-justified">
+          <p>Phone2Act enables safe and seamless spatial control by strictly bounding movements and decoupling phone repositioning from robot motion. Key features demonstrated in the video above include:</p>
+          <ul>
+            <li><b>Floating Zero (Clutching):</b> Pressing the Volume Down button engages the clutch, holding the robot in place while the operator freely repositions the phone. This provides an unlimited virtual workspace.</li>
+            <li><b>Zero-Jump Safety Filter:</b> Tracking loss, accidental phone drops, or rapid motions are safely ignored. Any spatial jump exceeding a configurable threshold (e.g., 60mm) is silently dropped, protecting the hardware.</li>
+            <li><b>Seamless Gripper Actuation:</b> The Volume Up key maps directly to a binary gripper command, allowing uninterrupted spatial control while interacting with objects.</li>
+            <li><b>Modular Core Planner:</b> All safety parameters and positional scaling are configurable via YAML files, allowing the same teleoperation logic to safely support diverse robot kinematic chains.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="column is-half video-container">
+        <img src="media/phone_ui.jpeg" alt="Phone2Act App UI" style="border-radius: 10px; max-height: 500px;">
+        <p class="is-size-7" style="margin-top: 10px;"><b>Phone2Act Android Application UI.</b> (Example showing connectivity and AR pose/volume topics.)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">Hardware Agnostic & Bimanual Support</h2>
+    <div class="content has-text-justified">
+      <p>
+        By routing commands through standardized ROS 2 topics, Phone2Act scales effortlessly. Scaling from an industrial Dobot CR5 to a low-cost, 3D-printed LeRobot SO-101 dual-arm setup requires <b>zero modifications</b> to the core source code. 
+      </p>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-half video-container">
+        <video autoplay muted loop playsinline width="100%" style="border-radius: 10px;">
+          <source src="media/lerobot_teleop.mp4" type="video/mp4">
+        </video>
+        <p><b>LeRobot SO-101 (Bimanual)</b></p>
+      </div>
+      <div class="column is-half video-container">
+        <video autoplay muted loop playsinline width="100%" style="border-radius: 10px;">
+          <source src="media/dobot_teleop.mp4" type="video/mp4">
+        </video>
+        <p><b>Industrial Cobot (Dobot CR5)</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">Real-World Policy Deployment (GR00T-N1.5)</h2>
+    <div class="columns is-vcentered">
+      <div class="column is-half video-container">
+        <video autoplay muted loop playsinline width="100%" style="border-radius: 10px;">
+          <source src="media/groot_deployment.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-half">
+        <div class="content has-text-justified">
+          <p>
+            Phone2Act features a <b>Universal Recorder</b> that exports synchronized RGB frames, robot states, and actions directly into the LeRobot dataset format (Parquet + MP4) at 20Hz.
+          </p>
+          <p>
+            We validated the collected data by fine-tuning the <b>GR00T-N1.5-3B</b> model on 130 teleoperation episodes. Deployed on a physical Dobot CR5, the policy achieved a <b>90% success rate</b> on a multi-stage real-world pick-and-place task, proving the system's viability for scalable VLA training.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">System Architecture</h2>
+    <div class="has-text-centered">
+      <img src="media/architecture.jpeg" alt="Phone2Act Architecture" width="90%">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3 section-title">BibTeX</h2>
+    <pre><code>@article{mandhane2026phone2act,
+  title     = {Phone2Act: A Low-Cost, Hardware-Agnostic Teleoperation System for Scalable VLA Data Collection},
+  author    = {Mandhane, Om and Yadav, Bipin and Ram, Sangeetha Prasanna and Narayanan, Gopalakrishnan},
+  journal   = {arXiv preprint arXiv:XXXX.XXXXX},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container has-text-centered">
+    <p>
+      Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, 
+      <a href="https://openvla.github.io/">OpenVLA</a>, and <a href="https://tiny-vla.github.io/">Tiny-VLA</a>.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
